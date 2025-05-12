@@ -43,6 +43,19 @@ public class MyBot extends TelegramLongPollingBot {
         return "7035941281:AAHnhuEADA_Vg-TYd5HQBPilkJ76YCAa-6g";
     }
 
+    public SendMessage sendMessage (Long chatId  , String text){
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(chatId);
+        sendMessage.setText(text);
+
+        try {
+            execute(sendMessage);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }
+        return sendMessage;
+    }
+
     // Send topic buttons to the user
     private void sendMathTopics(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
