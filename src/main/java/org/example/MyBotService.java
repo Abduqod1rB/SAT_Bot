@@ -4,6 +4,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
+import org.telegram.telegrambots.meta.api.objects.webapp.WebAppInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,12 @@ public class MyBotService {
         // 3-row: Useful Links va Desmos Solution tugmalari
         KeyboardRow row3 = new KeyboardRow();
         row3.add(new KeyboardButton("\uD83D\uDCCD Location"));
-        row3.add(new KeyboardButton("🧮 Desmos"));
+
+        KeyboardButton button = new KeyboardButton();
+        button.setText("🧮 Desmos");
+        WebAppInfo webAppInfo = new WebAppInfo("https://www.desmos.com/testing/cb-sat-ap/graphing");
+        button.setWebApp(webAppInfo);
+        row3.add(button);
 
         KeyboardRow row4 = new KeyboardRow();
         row4.add(new KeyboardButton("\uD83D\uDDD3 Registration service"));
