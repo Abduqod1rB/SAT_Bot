@@ -25,11 +25,11 @@ public class MyBotService {
         // 2-row: Grammar va SAT Practice tugmalari
         KeyboardRow row2 = new KeyboardRow();
         row2.add(new KeyboardButton("📚 Vocabulary"));
-        row2.add(new KeyboardButton("\uD83D\uDCDD Practice"));
+        row2.add(new KeyboardButton("\uD83D\uDD17 Online Practice Platforms"));
 
         // 3-row: Useful Links va Desmos Solution tugmalari
         KeyboardRow row3 = new KeyboardRow();
-        row3.add(new KeyboardButton("\uD83D\uDCCD Location"));
+        row3.add(new KeyboardButton("\uD83D\uDCCD Test Centers"));
 
         KeyboardButton button = new KeyboardButton();
         button.setText("🧮 Desmos");
@@ -38,7 +38,9 @@ public class MyBotService {
         row3.add(button);
 
         KeyboardRow row4 = new KeyboardRow();
-        row4.add(new KeyboardButton("\uD83D\uDDD3 Registration service"));
+        row4.add(new KeyboardButton("\uD83D\uDCDD Register for SAT"));
+
+        row4.add(new KeyboardButton("\uD83D\uDCAC Contact Admin"));
 
         rowList.add(row1);
         rowList.add(row2);

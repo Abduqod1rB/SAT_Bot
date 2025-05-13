@@ -25,9 +25,10 @@ public class MyBot extends TelegramLongPollingBot {
                 case "📗 English" -> sendEnglishTopics(chatId);
                 case "🧮 Desmos" -> sendText(chatId, "Desmos: https://www.desmos.com/calculator");
                 case "📚 Vocabulary" ->sendVocabulary(chatId);
-                case "\uD83D\uDCDD Practice"-> sendText(chatId, "https://bluebook.plus/");
-                case "\uD83D\uDCCD Location"->sendText(chatId,"SAT location: ");
-                case "\uD83D\uDDD3 Registration service"->sendText(chatId,"Registration service is not working at this time");
+                case "\uD83D\uDD17 Online Practice Platforms"-> sendText1(chatId, "https://bluebook.plus\n https://oneprep.fly.dev\n");
+                case "\uD83D\uDCCD Test Centers"->sendText(chatId,"SAT location: ");
+                case "\uD83D\uDCDD Register for SAT"->sendText(chatId,"Registration service is not working at this time");
+                case "\uD83D\uDCAC Contact Admin" ->sendText(chatId,"@abu_org");
                 default -> sendText(chatId, "Iltimos, menyudagi tugmalardan foydalaning.");
             }
         }
@@ -114,6 +115,12 @@ public class MyBot extends TelegramLongPollingBot {
     }
 
     private void sendText(Long chatId, String text) {
+        SendMessage message = new SendMessage();
+        message.setChatId(chatId.toString());
+        message.setText(text);
+        executeSafely(message);
+    }
+    private void sendText1(Long chatId, String text) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId.toString());
         message.setText(text);
