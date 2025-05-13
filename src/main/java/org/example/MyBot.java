@@ -27,8 +27,8 @@ public class MyBot extends TelegramLongPollingBot {
                 case "📚 Vocabulary" ->sendVocabulary(chatId);
                 case "\uD83D\uDD17 Online Practice Platforms"-> sendText1(chatId, "https://bluebook.plus\n https://oneprep.fly.dev\n");
                 case "\uD83D\uDCCD Test Centers"->sendText(chatId,"SAT location: ");
-                case "\uD83D\uDCDD Register for SAT"->sendText(chatId,"Registration service is not working at this time");
-                case "\uD83D\uDCAC Contact Admin" ->sendText(chatId,"@abu_org");
+                case "\uD83D\uDCDD Register for SAT"->sendText(chatId,"Registratsiya boyicha savollar bolsa ushbu lichkaga murojaat qiling\n @abu_org");
+                case "\uD83D\uDCAC Contact Admin" ->sendText(chatId," @abu_org");
                 default -> sendText(chatId, "Iltimos, menyudagi tugmalardan foydalaning.");
             }
         }
