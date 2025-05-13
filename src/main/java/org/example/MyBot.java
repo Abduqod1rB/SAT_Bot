@@ -1,10 +1,14 @@
 package org.example;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
@@ -18,19 +22,49 @@ public class MyBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String text = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
-
             switch (text) {
-                case "/start" -> executeSafely(myBotService.menu(chatId));
+
+                case "/start", "⬅️ Menu" -> executeSafely(myBotService.menu(chatId));
                 case "📘 Math" -> sendMathTopics(chatId);
                 case "📗 English" -> sendEnglishTopics(chatId);
                 case "🧮 Desmos" -> sendText(chatId, "Desmos: https://www.desmos.com/calculator");
-                case "📚 Vocabulary" ->sendVocabulary(chatId);
-                case "\uD83D\uDD17 Online Practice Platforms"-> sendText1(chatId, "https://bluebook.plus\n https://oneprep.fly.dev\n");
-                case "\uD83D\uDCCD Test Centers"->sendText(chatId,"SAT location: ");
-                case "\uD83D\uDCDD Register for SAT"->sendText(chatId,"Registration service is not working at this time");
-                case "\uD83D\uDCAC Contact Admin" ->sendText(chatId,"@abu_org");
+                case "📚 Vocabulary" -> sendVocabulary(chatId);
+                case "\uD83D\uDD17 Online Practice Platforms" ->
+                        sendText(chatId, "https://bluebook.plus\nhttps://oneprep.fly.dev\n");
+                case "\uD83D\uDCCC Test Centers" -> executeSafely(myBotService.sendLocation(chatId));
+                case "\uD83D\uDCDD Register for SAT" ->
+                        sendText(chatId, "Registration service is not working at this time");
+                case "\uD83D\uDCAC Contact Admin" -> sendText(chatId, "@abu_org");
+                case "\uD83D\uDCCC Others" -> executeSafely(myBotService.otherLocation(chatId));
+
+
+                case "\uD83D\uDCCD Cambridge International College" ->{executeLoc( myBotService.sendExactLocation(chatId,"cambridge"));executeSafely(myBotService.sendLocMessage(chatId,"cambridge"));}
+                case "\uD83D\uDCCD President School of Tashkent"->{executeLoc( myBotService.sendExactLocation(chatId,"president tashkent"));executeSafely(myBotService.sendLocMessage(chatId,"president tashkent"));}
+                case "\uD83D\uDCCD Sodiq school"->{executeLoc( myBotService.sendExactLocation(chatId,"sodiq"));executeSafely(myBotService.sendLocMessage(chatId,"sodiq"));}
+                case "\uD83D\uDCCD Tashkent International School"->{executeLoc( myBotService.sendExactLocation(chatId,"inter tashkent"));executeSafely(myBotService.sendLocMessage(chatId,"inter tashkent"));}
+                case "\uD83D\uDCCD Stars International University"->{executeLoc( myBotService.sendExactLocation(chatId,"stars"));executeSafely(myBotService.sendLocMessage(chatId,"stars"));}
+                case "\uD83D\uDCCD New Uzbekistan University"->{executeLoc( myBotService.sendExactLocation(chatId,"newUzb"));executeSafely(myBotService.sendLocMessage(chatId,"newUzb"));}
+                case "\uD83D\uDCCD Target International School"->{executeLoc( myBotService.sendExactLocation(chatId,"target"));executeSafely(myBotService.sendLocMessage(chatId,"target"));}
+                case "\uD83D\uDCCD Presidential School of Andijan"->{executeLoc( myBotService.sendExactLocation(chatId,"andijan"));executeSafely(myBotService.sendLocMessage(chatId,"andijan"));}
+                case "\uD83D\uDCCD President School of Djizzakh"->{executeLoc( myBotService.sendExactLocation(chatId,"djizzakh"));executeSafely(myBotService.sendLocMessage(chatId,"djizzakh"));}
+                case "\uD83D\uDCCD Presidential School of Khiva"->{executeLoc( myBotService.sendExactLocation(chatId,"khiva"));executeSafely(myBotService.sendLocMessage(chatId,"khiva"));}
+                case "\uD83D\uDCCD Innovative Center(Samarqand)"->{executeLoc( myBotService.sendExactLocation(chatId,"innovative"));executeSafely(myBotService.sendLocMessage(chatId,"innovative"));}
+                case "\uD83D\uDCCD Presidential School of Bukhara"->{executeLoc( myBotService.sendExactLocation(chatId,"bukhara"));executeSafely(myBotService.sendLocMessage(chatId,"bukhara"));}
+                case "\uD83D\uDCCD Presidential School of Fergana"->{executeLoc( myBotService.sendExactLocation(chatId,"fergana"));executeSafely(myBotService.sendLocMessage(chatId,"fergana"));}
+                case "\uD83D\uDCCD Presidential School of Navoiy"->{executeLoc( myBotService.sendExactLocation(chatId,"navoiy"));executeSafely(myBotService.sendLocMessage(chatId,"navoiy"));}
+                case "\uD83D\uDCCD Presidential School of Nukus"->{executeLoc( myBotService.sendExactLocation(chatId,"nukus"));executeSafely(myBotService.sendLocMessage(chatId,"nukus"));}
+                case "\uD83D\uDCCD Presidential School of Nurafshon"->{executeLoc( myBotService.sendExactLocation(chatId,"nurafshon"));executeSafely(myBotService.sendLocMessage(chatId,"nurafshon"));}
+                case "\uD83D\uDCCD Presidential School of Termez"->{executeLoc( myBotService.sendExactLocation(chatId,"termez"));executeSafely(myBotService.sendLocMessage(chatId,"termez"));}
+                case "\uD83D\uDCCD Presidential School of Gulistan"->{executeLoc( myBotService.sendExactLocation(chatId,"gulistan"));executeSafely(myBotService.sendLocMessage(chatId,"gulistan"));}
+                case "\uD83D\uDCCD Presidential School of Karshi"->{executeLoc( myBotService.sendExactLocation(chatId,"karshi"));executeSafely(myBotService.sendLocMessage(chatId,"karshi"));}
+                case "\uD83D\uDCCD Presidential School of Namangan"->{executeLoc( myBotService.sendExactLocation(chatId,"namangan"));executeSafely(myBotService.sendLocMessage(chatId,"namangan"));}
+
+
+
                 default -> sendText(chatId, "Iltimos, menyudagi tugmalardan foydalaning.");
             }
+
+
         }
     }
 
@@ -44,18 +78,6 @@ public class MyBot extends TelegramLongPollingBot {
         return "7035941281:AAHnhuEADA_Vg-TYd5HQBPilkJ76YCAa-6g";
     }
 
-    public SendMessage sendMessage (Long chatId  , String text){
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chatId);
-        sendMessage.setText(text);
-
-        try {
-            execute(sendMessage);
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
-        }
-        return sendMessage;
-    }
 
     // Send topic buttons to the user
     private void sendMathTopics(Long chatId) {
@@ -78,6 +100,7 @@ public class MyBot extends TelegramLongPollingBot {
 
         executeSafely(message);
     }
+
     private void sendEnglishTopics(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
@@ -120,13 +143,14 @@ public class MyBot extends TelegramLongPollingBot {
         message.setText(text);
         executeSafely(message);
     }
-    private void sendText1(Long chatId, String text) {
-        SendMessage message = new SendMessage();
-        message.setChatId(chatId.toString());
-        message.setText(text);
-        executeSafely(message);
-    }
 
+private void executeLoc(SendLocation location) {
+        try {
+            execute(location);
+        }catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+}
     // Safely execute a Telegram method (sending messages)
     private void executeSafely(SendMessage message) {
         try {
