@@ -17,7 +17,7 @@ import java.util.List;
 public class MyBot extends TelegramLongPollingBot {
     static MyBotService myBotService = new MyBotService();
 
-    @Overridell
+    @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String text = update.getMessage().getText();
