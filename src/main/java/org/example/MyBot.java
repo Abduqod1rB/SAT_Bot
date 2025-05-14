@@ -73,12 +73,12 @@ public class MyBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "SATmaterials2025_bot";
+        return "SATmaterialsForStudents_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "7035941281:AAHnhuEADA_Vg-TYd5HQBPilkJ76YCAa-6g";
+        return "7930871877:AAFr0AKNmn3Ce16dl4sYo60U9LbvbzB7WQ0";
     }
 
 
