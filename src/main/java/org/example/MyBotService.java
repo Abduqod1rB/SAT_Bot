@@ -53,7 +53,7 @@ public class MyBotService {
         rowList.add(row5);
 
         reply.setKeyboard(rowList);
-        reply.setResizeKeyboard(true); // Klaviaturani hajmini avtomatik ravishda moslashtirish
+        reply.setResizeKeyboard(true);
 
         String welcomeText = """
                 👋 *Assalomu alaykum! Xush kelibsiz!*
@@ -67,12 +67,11 @@ public class MyBotService {
                 Iltimos, kerakli bo‘limni tanlang 👇
                 """;
 
-        // SendMessage obyektini yaratish va chatga yuborish
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText(welcomeText); // Xush kelibsiz matni
-        sendMessage.setParseMode("Markdown"); // Markdown formatini qo'llash
-        sendMessage.setReplyMarkup(reply); // Klaviatura ni o'rnatish
+        sendMessage.setText(welcomeText);
+        sendMessage.setParseMode("Markdown");
+        sendMessage.setReplyMarkup(reply);
 
         return sendMessage;
     }

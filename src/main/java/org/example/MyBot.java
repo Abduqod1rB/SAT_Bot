@@ -41,6 +41,7 @@ public class MyBot extends TelegramLongPollingBot {
                 case "\uD83D\uDCAC Contact Admin" -> sendText(chatId, "@abu_org");
                 case "\uD83D\uDCCC Others" -> executeSafely(myBotService.otherLocation(chatId));
 
+
                 case "\uD83D\uDCCD Cambridge International College" ->{executeLoc( myBotService.sendExactLocation(chatId,"cambridge"));executeSafely(myBotService.sendLocMessage(chatId,"cambridge"));}
                 case "\uD83D\uDCCD President School of Tashkent"->{executeLoc( myBotService.sendExactLocation(chatId,"president tashkent"));executeSafely(myBotService.sendLocMessage(chatId,"president tashkent"));}
                 case "\uD83D\uDCCD Sodiq school"->{executeLoc( myBotService.sendExactLocation(chatId,"sodiq"));executeSafely(myBotService.sendLocMessage(chatId,"sodiq"));}
@@ -113,7 +114,7 @@ public class MyBot extends TelegramLongPollingBot {
 
         SendMessage message = new SendMessage();
         message.setChatId(chatId.toString());
-        message.setText("Quyidagi mavzulardan birini tanlang:");
+        message.setText("Quyidagi mavzulardan birini tanlang: ");
         message.setReplyMarkup(markup);
 
         executeSafely(message);
@@ -123,14 +124,14 @@ public class MyBot extends TelegramLongPollingBot {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
-        rows.add(List.of(InlineKeyboardButton.builder().text("📘 Math Vocabulary").callbackData("mathVocav").build()));
+        rows.add(List.of(InlineKeyboardButton.builder().text("📘 Math Vocabulary").callbackData("mathVocab").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📗 English Vocabulary").callbackData("englishVocab").build()));
 
         markup.setKeyboard(rows);
 
         SendMessage message = new SendMessage();
         message.setChatId(chatId.toString());
-        message.setText("Quyidagi mavzulardan birini tanlang:");
+        message.setText("Quyidagi mavzulardan birini tanlang: ");
         message.setReplyMarkup(markup);
 
         executeSafely(message);
