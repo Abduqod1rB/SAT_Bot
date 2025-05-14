@@ -76,6 +76,27 @@ public class MyBotService {
         return sendMessage;
     }
 
+    public SendMessage contact(Long chatId) {
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(chatId);
+        sendMessage.setText("\uD83D\uDCDE Ro'yxatdan o'tish uchun telefon raqamingizni kiriting. \n" +
+                " \n" +
+                " Raqamni +998********* shaklida yuboring.");
+        ReplyKeyboardMarkup reply = new ReplyKeyboardMarkup();
+
+        List<KeyboardRow> rows = new ArrayList<>();
+        KeyboardRow row1 = new KeyboardRow();
+        KeyboardButton button1 = new KeyboardButton();
+        button1.setRequestContact(true);
+        button1.setText("☎\uFE0F Share Contact");
+        row1.add(button1);
+        rows.add(row1);
+        reply.setKeyboard(rows);
+        reply.setResizeKeyboard(true);
+        sendMessage.setReplyMarkup(reply);
+        return sendMessage;
+    }
+
     public SendMessage sendLocation(Long chatId) {
         ReplyKeyboardMarkup reply = new ReplyKeyboardMarkup();
         List<KeyboardRow> rowList = new ArrayList<>();

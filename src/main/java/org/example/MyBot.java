@@ -67,9 +67,23 @@ public class MyBot extends TelegramLongPollingBot {
                 
                 default -> sendText(chatId, "Iltimos, menyudagi tugmalardan foydalaning.");
             }
-
-
         }
+
+        if(update.hasMessage() && update.getMessage().hasContact()) {
+            SendMessage sendMessage = new SendMessage();
+            Long chatId = update.getMessage().getChatId();
+            String phoneNumber = update.getMessage().getContact().getPhoneNumber();
+            String name = update.getMessage().getFrom().getFirstName();
+            System.out.println(name + "\n" + phoneNumber);
+            sendMessage.setChatId(chatId);
+            try {
+                execute(myBotService.menu(chatId));
+                execute(sendMessage);
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
     }
 
     @Override
