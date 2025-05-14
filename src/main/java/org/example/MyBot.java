@@ -23,20 +23,22 @@ public class MyBot extends TelegramLongPollingBot {
             String text = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
             switch (text) {
-
-                case "/start", "⬅️ Back" -> executeSafely(myBotService.sendLocation(chatId));
+                case "/start"-> executeSafely(myBotService.menu(chatId));
+                case  "⬅️ Back"->executeSafely(myBotService.sendLocation(chatId));
                 case "📘 Math" -> sendMathTopics(chatId);
                 case "📗 English" -> sendEnglishTopics(chatId);
                 case "🧮 Desmos" -> sendText(chatId, "Desmos: https://www.desmos.com/calculator");
                 case "📚 Vocabulary" -> sendVocabulary(chatId);
-                case "\uD83D\uDD17 Online Practice Platforms" ->
-                        sendText(chatId, "https://bluebook.plus\nhttps://oneprep.fly.dev\n");
+                case "\uD83D\uDD17 Online Practice Platforms" -> {
+                    sendText(chatId, "https://bluebook.plus");
+                    sendText(chatId,"https://oneprep.fly.dev/");
+                    sendText(chatId,"https://test-ninjas.com/digital-sat-score-calculator");
+                }
                 case "\uD83D\uDCCC Test Centers" -> executeSafely(myBotService.sendLocation(chatId));
                 case "\uD83D\uDCDD Register for SAT" ->
                         sendText(chatId, "Registration service is not working at this time");
                 case "\uD83D\uDCAC Contact Admin" -> sendText(chatId, "@abu_org");
                 case "\uD83D\uDCCC Others" -> executeSafely(myBotService.otherLocation(chatId));
-
 
                 case "\uD83D\uDCCD Cambridge International College" ->{executeLoc( myBotService.sendExactLocation(chatId,"cambridge"));executeSafely(myBotService.sendLocMessage(chatId,"cambridge"));}
                 case "\uD83D\uDCCD President School of Tashkent"->{executeLoc( myBotService.sendExactLocation(chatId,"president tashkent"));executeSafely(myBotService.sendLocMessage(chatId,"president tashkent"));}
