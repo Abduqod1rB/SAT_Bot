@@ -29,6 +29,7 @@ public class MyBot extends TelegramLongPollingBot {
                 case "📗 English" -> sendEnglishTopics(chatId);
                 case "🧮 Desmos" -> sendText(chatId, "Desmos: https://www.desmos.com/calculator");
                 case "📚 Vocabulary" -> sendVocabulary(chatId);
+                case "📚  Old Real Exams"->sendText(chatId,"<UNK> Old Real Exams");
                 case "\uD83D\uDD17 Online Practice Platforms" -> {
                     sendText(chatId, "https://bluebook.plus");
                     sendText(chatId,"https://oneprep.fly.dev/");
@@ -81,12 +82,10 @@ public class MyBot extends TelegramLongPollingBot {
     }
 
 
-    // Send topic buttons to the user
     private void sendMathTopics(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
-        // Adding buttons to the list
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Algebra").callbackData("algebra").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Advanced Math").callbackData("advancedM").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Problem-Solving and Data Analysis").callbackData("problemS").build()));
@@ -107,7 +106,6 @@ public class MyBot extends TelegramLongPollingBot {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
-        // Adding buttons to the list
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Reading").callbackData("algebra").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📗 Writing").callbackData("geometry").build()));
 
@@ -125,7 +123,6 @@ public class MyBot extends TelegramLongPollingBot {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
-        // Adding buttons to the list
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Math Vocabulary").callbackData("mathVocav").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📗 English Vocabulary").callbackData("englishVocab").build()));
 
@@ -153,7 +150,6 @@ private void executeLoc(SendLocation location) {
             e.printStackTrace();
         }
 }
-    // Safely execute a Telegram method (sending messages)
     private void executeSafely(SendMessage message) {
         try {
             execute(message);

@@ -31,7 +31,7 @@ public class MyBotService {
 
         // 3-row: Useful Links va Desmos Solution tugmalari
         KeyboardRow row3 = new KeyboardRow();
-        row3.add(new KeyboardButton("\uD83D\uDCCC Test Centers"));
+        row3.add(new KeyboardButton("📚  Old Real Exams"));
 
         KeyboardButton button = new KeyboardButton();
         button.setText("🧮 Desmos");
@@ -40,15 +40,17 @@ public class MyBotService {
         row3.add(button);
 
         KeyboardRow row4 = new KeyboardRow();
+        row4.add(new KeyboardButton("\uD83D\uDCCC Test Centers"));
         row4.add(new KeyboardButton("\uD83D\uDCDD Register for SAT"));
 
-        row4.add(new KeyboardButton("\uD83D\uDCAC Contact Admin"));
+        KeyboardRow row5 = new KeyboardRow();
+        row5.add(new KeyboardButton("\uD83D\uDCAC Contact Admin"));
 
         rowList.add(row1);
         rowList.add(row2);
         rowList.add(row3);
         rowList.add(row4);
-
+        rowList.add(row5);
 
         reply.setKeyboard(rowList);
         reply.setResizeKeyboard(true); // Klaviaturani hajmini avtomatik ravishda moslashtirish
