@@ -142,7 +142,7 @@ public class MyBotService {
 
         KeyboardRow row7 = new KeyboardRow();
         row7.add(new KeyboardButton("\uD83D\uDCCD Presidential School of Namangan"));
-        row7.add(new KeyboardButton("⬅\uFE0F Menu"));
+        row7.add(new KeyboardButton("⬅\uFE0F Back"));
 
         rowList.add(row1);
         rowList.add(row2);
