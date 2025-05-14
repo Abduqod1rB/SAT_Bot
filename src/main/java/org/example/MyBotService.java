@@ -1,5 +1,7 @@
 package org.example;
 
+import org.telegram.telegrambots.meta.api.methods.send.SendDice;
+import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.LinkPreviewOptions;
@@ -75,6 +77,7 @@ public class MyBotService {
 
         return sendMessage;
     }
+
 
     public SendMessage contact(Long chatId) {
         SendMessage sendMessage = new SendMessage();
@@ -187,6 +190,7 @@ public class MyBotService {
         sendMessage.setReplyMarkup(reply);
         return sendMessage;
     }
+
 
     public SendMessage sendLocMessage(Long chatId, String location) {
         SendMessage sendMessage = new SendMessage();
