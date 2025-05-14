@@ -95,11 +95,14 @@ public class MyBotService {
         row4.add(new KeyboardButton("\uD83D\uDCCD Target International School"));
         row4.add(new KeyboardButton("\uD83D\uDCCC Others"));
 
+        KeyboardRow row5 = new KeyboardRow();
+        row5.add(new KeyboardButton("⬅\uFE0F Menu"));
+
         rowList.add(row1);
         rowList.add(row2);
         rowList.add(row3);
         rowList.add(row4);
-
+        rowList.add(row5);
 
         reply.setKeyboard(rowList);
         reply.setResizeKeyboard(true);

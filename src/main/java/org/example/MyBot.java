@@ -23,7 +23,7 @@ public class MyBot extends TelegramLongPollingBot {
             String text = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
             switch (text) {
-                case "/start"-> executeSafely(myBotService.menu(chatId));
+                case "/start","⬅\uFE0F Menu"-> executeSafely(myBotService.menu(chatId));
                 case  "⬅️ Back"->executeSafely(myBotService.sendLocation(chatId));
                 case "📘 Math" -> sendMathTopics(chatId);
                 case "📗 English" -> sendEnglishTopics(chatId);
