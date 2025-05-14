@@ -1,7 +1,5 @@
 package org.example;
 
-import org.telegram.telegrambots.meta.api.methods.send.SendDice;
-import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.LinkPreviewOptions;
@@ -75,28 +73,6 @@ public class MyBotService {
         sendMessage.setParseMode("Markdown");
         sendMessage.setReplyMarkup(reply);
 
-        return sendMessage;
-    }
-
-
-    public SendMessage contact(Long chatId) {
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chatId);
-        sendMessage.setText("\uD83D\uDCDE Ro'yxatdan o'tish uchun telefon raqamingizni kiriting. \n" +
-                " \n" +
-                " Raqamni +998********* shaklida yuboring.");
-        ReplyKeyboardMarkup reply = new ReplyKeyboardMarkup();
-
-        List<KeyboardRow> rows = new ArrayList<>();
-        KeyboardRow row1 = new KeyboardRow();
-        KeyboardButton button1 = new KeyboardButton();
-        button1.setRequestContact(true);
-        button1.setText("☎\uFE0F Share Contact");
-        row1.add(button1);
-        rows.add(row1);
-        reply.setKeyboard(rows);
-        reply.setResizeKeyboard(true);
-        sendMessage.setReplyMarkup(reply);
         return sendMessage;
     }
 
@@ -190,7 +166,6 @@ public class MyBotService {
         sendMessage.setReplyMarkup(reply);
         return sendMessage;
     }
-
 
     public SendMessage sendLocMessage(Long chatId, String location) {
         SendMessage sendMessage = new SendMessage();
