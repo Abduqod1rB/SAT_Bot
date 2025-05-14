@@ -62,7 +62,7 @@ public class MyBot extends TelegramLongPollingBot {
                 case "\uD83D\uDCCD Presidential School of Namangan"->{executeLoc( myBotService.sendExactLocation(chatId,"namangan"));executeSafely(myBotService.sendLocMessage(chatId,"namangan"));}
 
 
-
+                
                 default -> sendText(chatId, "Iltimos, menyudagi tugmalardan foydalaning.");
             }
 
