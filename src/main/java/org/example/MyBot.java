@@ -24,7 +24,7 @@ public class MyBot extends TelegramLongPollingBot {
             Long chatId = update.getMessage().getChatId();
             switch (text) {
 
-                case "/start", "⬅️ Menu" -> executeSafely(myBotService.menu(chatId));
+                case "/start", "⬅️ Back" -> executeSafely(myBotService.sendLocation(chatId));
                 case "📘 Math" -> sendMathTopics(chatId);
                 case "📗 English" -> sendEnglishTopics(chatId);
                 case "🧮 Desmos" -> sendText(chatId, "Desmos: https://www.desmos.com/calculator");
