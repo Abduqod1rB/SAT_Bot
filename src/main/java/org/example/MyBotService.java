@@ -214,7 +214,7 @@ public class MyBotService {
 
         inlineKeyboardMarkup.setKeyboard(rows);
         sendMessage.setReplyMarkup(inlineKeyboardMarkup);
-         return sendMessage;
+        return sendMessage;
     }
 
 
@@ -238,7 +238,8 @@ public class MyBotService {
             case "fergana" -> sendMessage.setText("Qashqar 1, Fergana, Fergana Uzbekistan");
             case "navoiy" -> sendMessage.setText("34 B Navoi Street, Navoi, Uzbekistan");
             case "nukus" -> sendMessage.setText("1A Olmozor Street, Republic Of Karakalpakstan Uzbekistan");
-            case "nurafshon" -> sendMessage.setText("Yangiobod 36 Tashkent Region, Nurafshon City, Tashkent Region Uzbekistan");
+            case "nurafshon" ->
+                    sendMessage.setText("Yangiobod 36 Tashkent Region, Nurafshon City, Tashkent Region Uzbekistan");
             case "termez" -> sendMessage.setText("at-Termiziy street, Surkhandarya region Uzbekistan");
             case "gulistan" -> sendMessage.setText("260A Navoiy Avenue, Gulistan, Sirdaryo Uzbekistan");
             case "karshi" -> sendMessage.setText("Mustaqillik street, Qarshi, Qashqadaryo, UZBEKISTAN");

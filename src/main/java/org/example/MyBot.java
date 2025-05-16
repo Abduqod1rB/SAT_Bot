@@ -141,7 +141,7 @@ public class MyBot extends TelegramLongPollingBot {
 
                 }
                 case "algebra" -> {
-                    executeDelete(String.valueOf(chatId),callbackQuery.getMessage().getMessageId());
+                    executeDelete(String.valueOf(chatId), callbackQuery.getMessage().getMessageId());
                     sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/62");
                     sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/63");
                     sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/64");
@@ -280,7 +280,7 @@ public class MyBot extends TelegramLongPollingBot {
         }
     }
 
-    private void executeDelete(String chatId,Integer messageId) {
+    private void executeDelete(String chatId, Integer messageId) {
         DeleteMessage deleteMessage = new DeleteMessage(chatId, messageId);
         try {
             execute(deleteMessage);
