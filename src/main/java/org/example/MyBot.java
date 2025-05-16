@@ -1,14 +1,15 @@
 package org.example;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
@@ -24,19 +25,18 @@ public class MyBot extends TelegramLongPollingBot {
             String text = update.getMessage().getText();
             Long chatId = update.getMessage().getChatId();
             switch (text) {
-                case "/start", "⬅\uFE0F Menu" -> executeSafely(myBotService.menu(chatId));
-                case "⬅️ Back" -> executeSafely(myBotService.sendLocation(chatId));
+                case "/start", "⬅️ Menu" -> executeSafely(myBotService.menu(chatId));
+                case "⬅️ Back", "\uD83D\uDCCC Test Centers" -> executeSafely(myBotService.sendLocation(chatId));
                 case "📘 Math" -> sendMathTopics(chatId);
                 case "📗 English" -> sendEnglishTopics(chatId);
                 case "🧮 Desmos" -> sendText(chatId, "Desmos: https://www.desmos.com/calculator");
                 case "📚 Vocabulary" -> sendVocabulary(chatId);
-                case "📚  Old Real Exams" -> sendText(chatId, "<UNK> Old Real Exams");
+                case "\uD83D\uDCD4  Old Real Exams" -> executeSafely(myBotService.menuForExams(chatId));
                 case "\uD83D\uDD17 Online Practice Platforms" -> {
                     sendText(chatId, "https://bluebook.plus");
                     sendText(chatId, "https://oneprep.fly.dev/");
                     sendText(chatId, "https://test-ninjas.com/digital-sat-score-calculator");
                 }
-                case "\uD83D\uDCCC Test Centers" -> executeSafely(myBotService.sendLocation(chatId));
                 case "\uD83D\uDCDD Register for SAT" ->
                         sendText(chatId, "Registration service is not working at this time");
                 case "\uD83D\uDCAC Contact Admin" -> sendText(chatId, "@abu_org");
@@ -128,6 +128,63 @@ public class MyBot extends TelegramLongPollingBot {
                 default -> sendText(chatId, "Iltimos, menyudagi tugmalardan foydalaning.");
             }
         }
+        if (update.hasCallbackQuery()) {
+            CallbackQuery callbackQuery = update.getCallbackQuery();
+            Long chatId = callbackQuery.getMessage().getChatId();
+            String data = callbackQuery.getData();
+            switch (data) {
+                case "desmosSol" -> {
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/14");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/15");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/16");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/17");
+
+                }
+                case "algebra" -> {
+                    executeDelete(String.valueOf(chatId),callbackQuery.getMessage().getMessageId());
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/62");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/63");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/64");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/65");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/66");
+                }
+                case "advancedM" -> {
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/55");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/56");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/57");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/58");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/59");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/60");
+                }
+                case "problemS" -> {
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/75");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/76");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/77");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/78");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/79");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/80");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/81");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/82");
+                }
+                case "geometry" -> {
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/72");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/70");
+                }
+                case "trigonometry" -> {
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/69");
+                    sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/71");
+                }
+                case "mathVocab" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/98");
+                case "englishVocab" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/18");
+                case "03.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/8");
+                case "05.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/9");
+                case "06.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/10");
+                case "08.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/11");
+                case "10.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/12");
+                case "11.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/13");
+            }
+
+        }
     }
 
     @Override
@@ -150,6 +207,7 @@ public class MyBot extends TelegramLongPollingBot {
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Problem-Solving and Data Analysis").callbackData("problemS").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Geometry").callbackData("geometry").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Trigonometry").callbackData("trigonometry").build()));
+        rows.add(List.of(InlineKeyboardButton.builder().text("📘 Desmos solutions").callbackData("desmosSol").build()));
 
         markup.setKeyboard(rows);
 
@@ -161,12 +219,24 @@ public class MyBot extends TelegramLongPollingBot {
         executeSafely(message);
     }
 
+    private void sendDocument(Long chatId, String document) {
+        SendDocument sendDocument = new SendDocument();
+        sendDocument.setDocument(new InputFile(document));
+        sendDocument.setChatId(chatId);
+        try {
+            execute(sendDocument);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void sendEnglishTopics(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
         rows.add(List.of(InlineKeyboardButton.builder().text("📘 Reading").callbackData("algebra").build()));
         rows.add(List.of(InlineKeyboardButton.builder().text("📗 Writing").callbackData("geometry").build()));
+        rows.add(List.of(InlineKeyboardButton.builder().text("\uD83D\uDCD2 Answers").callbackData("answersEng").build()));
 
         markup.setKeyboard(rows);
 
@@ -207,6 +277,15 @@ public class MyBot extends TelegramLongPollingBot {
             execute(location);
         } catch (TelegramApiException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void executeDelete(String chatId,Integer messageId) {
+        DeleteMessage deleteMessage = new DeleteMessage(chatId, messageId);
+        try {
+            execute(deleteMessage);
+        } catch (TelegramApiException e) {
+            throw new RuntimeException(e);
         }
     }
 

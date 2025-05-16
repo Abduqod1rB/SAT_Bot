@@ -2,8 +2,9 @@ package org.example;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.LinkPreviewOptions;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.api.objects.webapp.WebAppInfo;
@@ -12,15 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyBotService {
-
     // Menyu yaratish va qaytarish
     public SendMessage menu(Long chatId) {
         // Inline tugmalarni sozlash
         ReplyKeyboardMarkup reply = new ReplyKeyboardMarkup();
         List<KeyboardRow> rowList = new ArrayList<>();
 
-        // 1-row: Math va English tugmalari
-
+        // 1-row: Math and English tugmalari
         KeyboardRow row1 = new KeyboardRow();
         row1.add(new KeyboardButton("📘 Math"));
         row1.add(new KeyboardButton("📗 English"));
@@ -32,7 +31,7 @@ public class MyBotService {
 
         // 3-row: Useful Links va Desmos Solution tugmalari
         KeyboardRow row3 = new KeyboardRow();
-        row3.add(new KeyboardButton("📚  Old Real Exams"));
+        row3.add(new KeyboardButton("\uD83D\uDCD4  Old Real Exams"));
 
         KeyboardButton button = new KeyboardButton();
         button.setText("🧮 Desmos");
@@ -98,7 +97,7 @@ public class MyBotService {
         row4.add(new KeyboardButton("\uD83D\uDCCC Others"));
 
         KeyboardRow row5 = new KeyboardRow();
-        row5.add(new KeyboardButton("⬅\uFE0F Menu"));
+        row5.add(new KeyboardButton("⬅️ Menu"));
 
         rowList.add(row1);
         rowList.add(row2);
@@ -147,7 +146,7 @@ public class MyBotService {
 
         KeyboardRow row7 = new KeyboardRow();
         row7.add(new KeyboardButton("\uD83D\uDCCD Presidential School of Namangan"));
-        row7.add(new KeyboardButton("⬅\uFE0F Back"));
+        row7.add(new KeyboardButton("⬅️ Back"));
 
         rowList.add(row1);
         rowList.add(row2);
@@ -168,71 +167,82 @@ public class MyBotService {
         return sendMessage;
     }
 
+    public SendMessage menuForExams(Long chatId) {
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setText("Real exams in 2024");
+        sendMessage.setChatId(chatId);
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        List<InlineKeyboardButton> row2 = new ArrayList<>();
+
+
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText("SAT INT 03.2024");
+        button.setCallbackData("03.2024");
+        row.add(button);
+
+        InlineKeyboardButton button1 = new InlineKeyboardButton();
+        button1.setText("SAT INT 05.2024");
+        button1.setCallbackData("05.2024");
+        row.add(button1);
+
+        InlineKeyboardButton button2 = new InlineKeyboardButton();
+        button2.setText("SAT INT 06.2024");
+        button2.setCallbackData("06.2024");
+        row1.add(button2);
+
+        InlineKeyboardButton button3 = new InlineKeyboardButton();
+        button3.setText("SAT INT 08.2024");
+        button3.setCallbackData("08.2024");
+        row1.add(button3);
+
+        InlineKeyboardButton button4 = new InlineKeyboardButton();
+        button4.setText("SAT INT 10.2024");
+        button4.setCallbackData("10.2024");
+        row2.add(button4);
+
+        InlineKeyboardButton button5 = new InlineKeyboardButton();
+        button5.setText("SAT INT 11.2024");
+        button5.setCallbackData("11.2024");
+        row2.add(button5);
+
+        rows.add(row);
+        rows.add(row1);
+        rows.add(row2);
+
+        inlineKeyboardMarkup.setKeyboard(rows);
+        sendMessage.setReplyMarkup(inlineKeyboardMarkup);
+         return sendMessage;
+    }
+
+
     public SendMessage sendLocMessage(Long chatId, String location) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
         switch (location) {
-            case "cambridge" -> {
-                sendMessage.setText("Shayhontohur District, Tashkent, Uzbekistan");
-            }
-            case "president tashkent" -> {
-                sendMessage.setText("M.Ulug'bek tumani,Tashkent, Uzbekistan");
-            }
-            case "sodiq" -> {
-                sendMessage.setText("3 Kumarik street, Tashkent, UZBEKISTAN\n" +
-                        "Acad Lyceum Of Tashkent St Univ Of E Mahmudjon Gofurov Street 183");
-            }
-            case "inter tashkent" -> {
-                sendMessage.setText("38 Sarikulskaya street Tashkent, Uzbekistan");
-            }
-            case "stars" -> {
-                sendMessage.setText("2, Kutb street,Tashkent, Uzbekistan");
-            }
-            case "newUzb" -> {
-                sendMessage.setText("Movarounnahr street, Tashkent, Uzbekistan");
-            }
-            case "target" -> {
-                sendMessage.setText("Almazor district, Chustiy MFY, Tashkent, Uzbekistan");
-            }
-            case "andijan" -> {
-                sendMessage.setText("Alisher Novoyi Shox Street, Andijon, Uzbekistan");
-            }
-            case "djizzakh" -> {
-                sendMessage.setText("Istiklol 13 Sayiljoyi Mahallasi, Jizzakh, Uzbekistan");
-            }
-            case "khiva" -> {
-                sendMessage.setText("Khorezm region, Khiva, Khorezm Uzbekistan");
-            }
-            case "innovative" -> {
-                sendMessage.setText("Gagarin St, Samarkand Uzbekistan");
-            }
-            case "bukhara" -> {
-                sendMessage.setText("1, Mukhammad Ikbol Street, Bukhara, Uzbekistan");
-            }
-            case "fergana" -> {
-                sendMessage.setText("Qashqar 1, Fergana, Fergana Uzbekistan");
-            }
-            case "navoiy" -> {
-                sendMessage.setText("34 B Navoi Street, Navoi, Uzbekistan");
-            }
-            case "nukus" -> {
-                sendMessage.setText("1A Olmozor Street, Republic Of Karakalpakstan Uzbekistan");
-            }
-            case "nurafshon" -> {
-                sendMessage.setText("Yangiobod 36 Tashkent Region, Nurafshon City, Tashkent Region Uzbekistan");
-            }
-            case "termez" -> {
-                sendMessage.setText("at-Termiziy street, Surkhandarya region Uzbekistan");
-            }
-            case "gulistan" -> {
-                sendMessage.setText("260A Navoiy Avenue, Gulistan, Sirdaryo Uzbekistan");
-            }
-            case "karshi" -> {
-                sendMessage.setText("Mustaqillik street, Qarshi, Qashqadaryo, UZBEKISTAN");
-            }
-            case "namangan" -> {
-                sendMessage.setText("Islom Karimov St, 1, Namangan, Davlatobod Uzbekistan");
-            }
+            case "cambridge" -> sendMessage.setText("Shayhontohur District, Tashkent, Uzbekistan");
+            case "president tashkent" -> sendMessage.setText("M.Ulug'bek tumani,Tashkent, Uzbekistan");
+            case "sodiq" -> sendMessage.setText("3 Kumarik street, Tashkent, UZBEKISTAN\n" +
+                    "Acad Lyceum Of Tashkent St Univ Of E Mahmudjon Gofurov Street 183");
+            case "inter tashkent" -> sendMessage.setText("38 Sarikulskaya street Tashkent, Uzbekistan");
+            case "stars" -> sendMessage.setText("2, Kutb street,Tashkent, Uzbekistan");
+            case "newUzb" -> sendMessage.setText("Movarounnahr street, Tashkent, Uzbekistan");
+            case "target" -> sendMessage.setText("Almazor district, Chustiy MFY, Tashkent, Uzbekistan");
+            case "andijan" -> sendMessage.setText("Alisher Novoyi Shox Street, Andijon, Uzbekistan");
+            case "djizzakh" -> sendMessage.setText("Istiklol 13 Sayiljoyi Mahallasi, Jizzakh, Uzbekistan");
+            case "khiva" -> sendMessage.setText("Khorezm region, Khiva, Khorezm Uzbekistan");
+            case "innovative" -> sendMessage.setText("Gagarin St, Samarkand Uzbekistan");
+            case "bukhara" -> sendMessage.setText("1, Mukhammad Ikbol Street, Bukhara, Uzbekistan");
+            case "fergana" -> sendMessage.setText("Qashqar 1, Fergana, Fergana Uzbekistan");
+            case "navoiy" -> sendMessage.setText("34 B Navoi Street, Navoi, Uzbekistan");
+            case "nukus" -> sendMessage.setText("1A Olmozor Street, Republic Of Karakalpakstan Uzbekistan");
+            case "nurafshon" -> sendMessage.setText("Yangiobod 36 Tashkent Region, Nurafshon City, Tashkent Region Uzbekistan");
+            case "termez" -> sendMessage.setText("at-Termiziy street, Surkhandarya region Uzbekistan");
+            case "gulistan" -> sendMessage.setText("260A Navoiy Avenue, Gulistan, Sirdaryo Uzbekistan");
+            case "karshi" -> sendMessage.setText("Mustaqillik street, Qarshi, Qashqadaryo, UZBEKISTAN");
+            case "namangan" -> sendMessage.setText("Islom Karimov St, 1, Namangan, Davlatobod Uzbekistan");
         }
         return sendMessage;
     }
