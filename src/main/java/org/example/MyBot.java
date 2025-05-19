@@ -198,6 +198,11 @@ public class MyBot extends TelegramLongPollingBot {
                     sendText(chatId, "English vocabulary files: ");
                     sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/18");
                 }
+                case "answersEng"->{
+                    sendText(chatId, "Answers for english files: ");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/35");
+                    sendDocument(chatId,"");
+                }
                 case "03.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/8");
                 case "05.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/9");
                 case "06.2024" -> sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/10");
