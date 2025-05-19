@@ -39,7 +39,9 @@ public class MyBot extends TelegramLongPollingBot {
                 }
                 case "\uD83D\uDCDD Register for SAT" ->
                         sendText(chatId, "Registration service is not working at this time");
-                case "\uD83D\uDCAC Contact Admin" -> sendText(chatId, "@abu_org");
+                case "\uD83D\uDCAC Contact Admin" -> sendText(chatId, "\uD83D\uDD27 Yordam kerakmi? Admin bilan bog‘lanish uchun bu yerga yozing:\n" +
+                        "\uD83D\uDCEC @abu_org\n" +
+                        "Iltimos, muammo yoki savolingizni aniq yozing — tez orada yordam beramiz!");
                 case "\uD83D\uDCCC Others" -> executeSafely(myBotService.otherLocation(chatId));
                 case "\uD83D\uDCCD Cambridge International College" -> {
                     executeLoc(myBotService.sendExactLocation(chatId, "cambridge"));
