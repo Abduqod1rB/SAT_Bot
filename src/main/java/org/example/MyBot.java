@@ -177,10 +177,16 @@ public class MyBot extends TelegramLongPollingBot {
                 case "reading" -> {
                     sendText(chatId, "Reading files: ");
                     sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/25");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/29");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/27");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/26");
                 }
                 case "writing" -> {
                     sendText(chatId, "Writing files: ");
                     sendDocument(chatId, "https://t.me/SatMaterialsDFGHJKJHGFDFGBN/45");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/100");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/101");
+                    sendDocument(chatId,"https://t.me/SatMaterialsDFGHJKJHGFDFGBN/102");
                 }
                 case "geometry" -> {
                     sendText(chatId, "Geometry files: ");
