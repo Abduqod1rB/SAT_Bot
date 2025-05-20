@@ -14,11 +14,10 @@ public class Quiz {
         this.correctOptionId = correctOptionId;
     }
 
-    List<Quiz> quizList = Arrays.asList(
-            new Quiz("Artist Marilyn Dingle’s intricate, coiled baskets are ______blank sweetgrass and palmetto palm. Following a Gullah technique that originated in West Africa, Dingle skillfully winds a thin palm frond around a bunch of sweetgrass with the help of a “sewing bone” to create the basket’s signature look that no factory can reproduce.", Arrays.asList("indicated by", "handmade from", "represented by", "collected with"), 2),
-            new Quiz("The following text is adapted from Nathaniel Hawthorne’s 1837 story “Dr. Heidegger’s Experiment.” The main character, a physician, is experimenting with rehydrating a dried flower.\n" +
-                    "\n" +
-                    "At first [the rose] lay lightly on the surface of the fluid, appearing to imbibe none of its moisture. Soon, however, a singular change began to be visible. The crushed and dried petals stirred and assumed a deepening tinge of crimson, as if the flower were reviving from a deathlike slumber. As used in the text, what does the phrase “a singular” most nearly mean?", Arrays.asList("A lonely", "A disagreeable", "An acceptable", "An extraordinary"), 4)
+    static List<Quiz> quizList = Arrays.asList(
+            new Quiz("Multiple newspapers ______blank the Spanish-speaking population of Washington, DC, including El Tiempo Latino and Washington Hispanic.", Arrays.asList("serve", "having served", "to serve", "serving"), 1),
+            new Quiz("A cube has a surface area of 54 square meters. What is the volume, in cubic meters, of the cube?", Arrays.asList("18", "27", "36", "81"), 2)
+
             // Add up to 100+ here or load from file
     );
 

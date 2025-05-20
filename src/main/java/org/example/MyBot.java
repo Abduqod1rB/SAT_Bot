@@ -39,9 +39,13 @@ public class MyBot extends TelegramLongPollingBot {
                 case "📚 Vocabulary" -> sendVocabulary(chatId);
                 case "\uD83D\uDCD4  Old Real Exams" -> executeSafely(myBotService.menuForExams(chatId));
                 case "/quiz" -> {
-                    subscribedChats.add(chatId);
-                    userQuizIndex.put(chatId, 0);
-                    sendText(chatId, "✅ Auto SAT quiz started! You'll get a new question every 1 minute.");
+                    if (!subscribedChats.contains(chatId)) {
+                        subscribedChats.add(chatId);
+                        userQuizIndex.put(chatId, 0);
+                        sendText(chatId, "✅ Auto SAT quiz started! You'll get a new question every 1 minute.");
+                    } else {
+                        sendText(chatId, "⏳ You're already subscribed to the quiz.");
+                    }
                 }
                 case "\uD83D\uDD17 Online Practice Platforms" -> {
                     sendText(chatId, "https://bluebook.plus");
@@ -236,9 +240,11 @@ public class MyBot extends TelegramLongPollingBot {
 
         }
     }
+
     public MyBot() {
         startAutoQuizScheduler(); // Starts scheduler on bot load
     }
+
     @Override
     public String getBotUsername() {
         return "SATmaterialsForStudents_bot";
@@ -254,7 +260,7 @@ public class MyBot extends TelegramLongPollingBot {
             for (long chatId : subscribedChats) {
                 sendNextQuiz(chatId);
             }
-        }, 0, 10, TimeUnit.SECONDS); // Change to 5 for every 5 minutes
+        }, 0, 1, TimeUnit.DAYS); // Change to 5 for every 5 minutes
     }
 
     private void sendMathTopics(Long chatId) {
@@ -324,12 +330,14 @@ public class MyBot extends TelegramLongPollingBot {
         executeSafely(message);
     }
 
+
     private void sendNextQuiz(long chatId) {
         int index = userQuizIndex.getOrDefault(chatId, 0);
-        Quiz classQuiz = new Quiz();
-        List<Quiz> quizList = classQuiz.quizList;
+        List<Quiz> quizList = Quiz.quizList;
+
         if (index >= quizList.size()) {
-            sendText(chatId, "🎉 You've completed all 100 quizzes!");
+            sendText(chatId, "🎉 You've completed all quizzes!");
+            subscribedChats.remove(chatId); // ✅ remove finished users
             return;
         }
 
@@ -341,6 +349,7 @@ public class MyBot extends TelegramLongPollingBot {
         poll.setType("quiz");
         poll.setCorrectOptionId(quiz.correctOptionId);
         poll.setIsAnonymous(true);
+
         try {
             execute(poll);
             userQuizIndex.put(chatId, index + 1);
@@ -365,22 +374,6 @@ public class MyBot extends TelegramLongPollingBot {
         }
     }
 
-    private void executeQuiz(SendPoll quize) {
-        try {
-            execute(quize);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void executeDelete(String chatId, Integer messageId) {
-        DeleteMessage deleteMessage = new DeleteMessage(chatId, messageId);
-        try {
-            execute(deleteMessage);
-        } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private void executeSafely(SendMessage message) {
         try {
