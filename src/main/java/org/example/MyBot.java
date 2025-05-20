@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.api.methods.polls.SendPoll;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+
 import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -39,13 +39,11 @@ public class MyBot extends TelegramLongPollingBot {
                 case "📚 Vocabulary" -> sendVocabulary(chatId);
                 case "\uD83D\uDCD4  Old Real Exams" -> executeSafely(myBotService.menuForExams(chatId));
                 case "/quiz" -> {
-                    if (!subscribedChats.contains(chatId)) {
+
                         subscribedChats.add(chatId);
                         userQuizIndex.put(chatId, 0);
                         sendText(chatId, "✅ Auto SAT quiz started! You'll get a new question every 1 minute.");
-                    } else {
-                        sendText(chatId, "⏳ You're already subscribed to the quiz.");
-                    }
+
                 }
                 case "\uD83D\uDD17 Online Practice Platforms" -> {
                     sendText(chatId, "https://bluebook.plus");
