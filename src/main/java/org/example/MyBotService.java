@@ -1,5 +1,6 @@
 package org.example;
 
+import org.telegram.telegrambots.meta.api.methods.polls.SendPoll;
 import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -8,8 +9,10 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.api.objects.webapp.WebAppInfo;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MyBotService {
@@ -217,6 +220,19 @@ public class MyBotService {
         return sendMessage;
     }
 
+    public SendPoll sendQuiz(Long chatId) {
+        SendPoll quiz = new SendPoll();
+        quiz.setChatId(chatId);
+        quiz.setIsAnonymous(true);
+        quiz.setQuestion("If 3x + 5 = 17, what is the value of x?");
+        quiz.setOptions(Arrays.asList("3", "4", "5", "6"));
+        quiz.setType("quiz");
+        quiz.setCorrectOptionId(1);
+        quiz.setExplanation("3x + 5 = 17 → 3x = 12 → x = 4");
+        quiz.setIsAnonymous(false);
+        return quiz;
+
+    }
 
     public SendMessage sendLocMessage(Long chatId, String location) {
         SendMessage sendMessage = new SendMessage();
