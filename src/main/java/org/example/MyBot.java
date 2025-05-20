@@ -349,7 +349,6 @@ public class MyBot extends TelegramLongPollingBot {
         poll.setType("quiz");
         poll.setCorrectOptionId(quiz.correctOptionId);
         poll.setIsAnonymous(true);
-
         try {
             execute(poll);
             userQuizIndex.put(chatId, index + 1);
