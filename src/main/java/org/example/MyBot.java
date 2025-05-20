@@ -258,7 +258,7 @@ public class MyBot extends TelegramLongPollingBot {
             for (long chatId : subscribedChats) {
                 sendNextQuiz(chatId);
             }
-        }, 0, 1, TimeUnit.DAYS); // Change to 5 for every 5 minutes
+        }, 0, 5, TimeUnit.SECONDS); // Change to 5 for every 5 minutes
     }
 
     private void sendMathTopics(Long chatId) {
