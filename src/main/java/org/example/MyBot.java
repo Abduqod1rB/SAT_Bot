@@ -40,9 +40,9 @@ public class MyBot extends TelegramLongPollingBot {
                 case "\uD83D\uDCD4  Old Real Exams" -> executeSafely(myBotService.menuForExams(chatId));
                 case "/quiz" -> {
 
-                        subscribedChats.add(chatId);
-                        userQuizIndex.put(chatId, 0);
-                        sendText(chatId, "✅ Auto SAT quiz started! You'll get a new question every 1 minute.");
+                    subscribedChats.add(chatId);
+                    userQuizIndex.put(chatId, 0);
+                    sendText(chatId, "✅ Auto SAT quiz started! You'll get a new question every 1 minute.");
 
                 }
                 case "\uD83D\uDD17 Online Practice Platforms" -> {
@@ -280,6 +280,7 @@ public class MyBot extends TelegramLongPollingBot {
         message.setReplyMarkup(markup);
         executeSafely(message);
     }
+
     private void sendDocument(Long chatId, String document) {
         SendDocument sendDocument = new SendDocument();
         sendDocument.setDocument(new InputFile(document));
@@ -290,6 +291,7 @@ public class MyBot extends TelegramLongPollingBot {
             throw new RuntimeException(e);
         }
     }
+
     private void sendEnglishTopics(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
@@ -307,6 +309,7 @@ public class MyBot extends TelegramLongPollingBot {
 
         executeSafely(message);
     }
+
     private void sendVocabulary(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
