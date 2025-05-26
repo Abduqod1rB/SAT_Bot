@@ -278,10 +278,8 @@ public class MyBot extends TelegramLongPollingBot {
         message.setChatId(chatId.toString());
         message.setText("Quyidagi mavzulardan birini tanlang:");
         message.setReplyMarkup(markup);
-
         executeSafely(message);
     }
-
     private void sendDocument(Long chatId, String document) {
         SendDocument sendDocument = new SendDocument();
         sendDocument.setDocument(new InputFile(document));
@@ -292,7 +290,6 @@ public class MyBot extends TelegramLongPollingBot {
             throw new RuntimeException(e);
         }
     }
-
     private void sendEnglishTopics(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
@@ -310,7 +307,6 @@ public class MyBot extends TelegramLongPollingBot {
 
         executeSafely(message);
     }
-
     private void sendVocabulary(Long chatId) {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> rows = new ArrayList<>();
